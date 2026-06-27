@@ -1,0 +1,6 @@
+{
+  "name": "Moda Versátil",
+  "description": "Landing page moderna, elegante e minimalista para a boutique de moda feminina Moda Versátil.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
