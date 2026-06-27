@@ -5,6 +5,36 @@ export const HERO_IMAGE = '/images/Conjunto.png';
 
 export const PRODUCTS: Product[] = [
   {
+    id: 'prod-calca-premium',
+    name: 'Calça de Linho com Algodão Feminina – Cintura Alta e Caimento Solto E Cordinha',
+    category: 'Calças',
+    price: 279.00,
+    originalPrice: 329.00,
+    description: 'A calça premium que é o maior sucesso de vendas da nossa loja! Confeccionada com uma mescla nobre de linho e algodão, apresenta modelagem de cintura alta super elegante, caimento levemente solto e moderno, com um delicado cordão de amarração no cós que ajusta a peça perfeitamente ao seu corpo. Uma peça versátil que transita perfeitamente do trabalho ao final de semana com extremo conforto e sofisticação.',
+    image: '/images/Calça de Linho com Algodão Feminina 1.png',
+    images: [
+      '/images/Calça de Linho com Algodão Feminina 1.png',
+      '/images/Calça de Linho com Algodão Feminina 2.png',
+      '/images/Calça de Linho com Algodão Feminina 3.png',
+      '/images/Calça de Linho com Algodão Feminina 4.png',
+      '/images/Calça de Linho com Algodão Feminina 5.png',
+      '/images/Calça de Linho com Algodão Feminina 6.png',
+      '/images/Calça de Linho com Algodão Feminina 7.png'
+    ],
+    material: 'Mescla Premium de Linho Soft & Algodão Nobre',
+    sizes: ['P', 'M', 'G'],
+    features: [
+      'Produto Premium mais vendido – O preferido das clientes',
+      'Cintura alta elegante com ajuste anatômico por cordão',
+      'Modelagem com caimento solto e fluido de alfaiataria fina',
+      'Fibras naturais de alta respirabilidade para conforto o dia todo'
+    ],
+    inStock: true,
+    isPremium: true,
+    badge: 'Mais Vendido ⭐',
+    shopeeUrl: 'https://onelink.shein.com/40/5u00gic2rajd'
+  },
+  {
     id: 'prod-linho',
     name: 'Conjunto em linho disponível!!!',
     category: 'Linho',

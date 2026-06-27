@@ -8,9 +8,17 @@ interface HeroProps {
 }
 
 const HERO_IMAGES = [
+  '/images/Calça de Linho com Algodão Feminina 1.png',
   '/images/Conjunto.png',
   '/images/Calça.png',
   '/images/linho.png'
+];
+
+const HERO_DETAILS = [
+  { subtitle: 'SUCESSO DE VENDAS ⭐', title: 'Calça de Linho Premium' },
+  { subtitle: 'NATURAL & ELEGÂNCIA', title: 'Conjunto de Linho' },
+  { subtitle: 'ESTILO RÚSTICO CHIC', title: 'Calça com Ilhós' },
+  { subtitle: 'FLEXIBILIDADE & CONFORTO', title: 'Calça com Botões' }
 ];
 
 export default function Hero({ onExploreClick }: HeroProps) {
@@ -162,17 +170,18 @@ export default function Hero({ onExploreClick }: HeroProps) {
 
             {/* Floating Info Tag / Caption */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.8 }}
+              key={currentIdx} // key by currentIdx so it performs smooth fade-in whenever the slide switches!
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
               className="absolute bottom-6 left-6 right-6 bg-neutral-950/70 backdrop-blur-md py-4.5 px-6 border border-white/10 flex items-center justify-between shadow-sm z-10"
             >
               <div className="text-left">
                 <p className="font-sans text-[9px] uppercase tracking-[0.3em] text-brand-gold-400 font-medium">
-                  NATURAL & ELEGÂNCIA
+                  {HERO_DETAILS[currentIdx]?.subtitle}
                 </p>
                 <h4 className="font-serif text-xl md:text-2xl font-light text-white tracking-wide mt-1">
-                  Conjunto de Linho
+                  {HERO_DETAILS[currentIdx]?.title}
                 </h4>
               </div>
               <button

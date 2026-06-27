@@ -140,7 +140,11 @@ export default function ProductCardSection({
                 key={prod.id}
                 layoutId={`card-${prod.id}`}
                 onClick={() => openProductModal(prod)}
-                className="group bg-brand-beige-50 border border-brand-beige-200/30 overflow-hidden cursor-pointer flex flex-col h-full hover:shadow-md hover:border-brand-beige-300/60 transition-all duration-300"
+                className={`group bg-brand-beige-50 border overflow-hidden cursor-pointer flex flex-col h-full transition-all duration-300 ${
+                  prod.isPremium 
+                    ? 'border-brand-gold-500/60 shadow-[0_4px_25px_rgba(197,160,89,0.15)] hover:shadow-[0_8px_35px_rgba(197,160,89,0.28)] hover:border-brand-gold-500 scale-[1.01]' 
+                    : 'border-brand-beige-200/30 hover:shadow-md hover:border-brand-beige-300/60'
+                }`}
               >
                 {/* Image Area with Mini Carousel */}
                 <div className="relative aspect-[4/5] overflow-hidden bg-brand-beige-100">
@@ -168,6 +172,14 @@ export default function ProductCardSection({
 
                   {/* Dark transparent gradient top and bottom */}
                   <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
+                  {/* Premium Highlight Badge */}
+                  {prod.isPremium && (
+                    <div className="absolute top-4 left-4 px-3 py-1.5 bg-brand-dark text-white border border-brand-gold-500 text-[9px] font-bold tracking-widest uppercase z-10 shadow-lg flex items-center gap-1.5">
+                      <Sparkles size={11} className="text-brand-gold-400 fill-brand-gold-400" />
+                      <span>{prod.badge || 'PRODUTO PREMIUM'}</span>
+                    </div>
+                  )}
 
                   {/* Like Badge */}
                   <button

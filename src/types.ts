@@ -13,6 +13,8 @@ export interface Product {
   inStock: boolean;
   shopeeUrl?: string; // redirect to shopee purchase page
   shopeePrice?: number; // optionally show Shopee price
+  isPremium?: boolean;
+  badge?: string;
 }
 
 export interface QuizQuestion {
