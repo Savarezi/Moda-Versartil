@@ -175,7 +175,8 @@ export const TESTIMONIALS: Testimonial[] = [
 ];
 
 export const WHATSAPP_PHONE = '5511951347742'; // WhatsApp number provided: +55 (11) 95134-7742
-export const INSTAGRAM_HANDLE = '@amandixcesar'; // Instagram link provided: https://www.instagram.com/amandixcesar/
+export const INSTAGRAM_HANDLE = '@moda.versatiil'; 
+export const INSTAGRAM_URL = 'https://www.instagram.com/moda.versatiil/#';
 export const CONTACT_EMAIL = 'patriciasavarezioliveira@gmail.com';
 
 export const BRAND_INFO = {

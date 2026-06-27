@@ -19,7 +19,7 @@ import ProductCardSection from './components/ProductCard';
 import MixMatch from './components/MixMatch';
 import { Testimonials } from './components/Testimonials';
 
-import { PRODUCTS, WHATSAPP_PHONE, INSTAGRAM_HANDLE, CONTACT_EMAIL } from './data';
+import { PRODUCTS, WHATSAPP_PHONE, INSTAGRAM_URL, CONTACT_EMAIL } from './data';
 
 export default function App() {
   // States for App
@@ -104,7 +104,7 @@ export default function App() {
             </p>
             <div className="flex space-x-4">
               <a 
-                href={`https://instagram.com/${INSTAGRAM_HANDLE.replace('@', '')}`}
+                href={INSTAGRAM_URL}
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-9 h-9 border border-brand-beige-300/20 flex items-center justify-center text-brand-beige-200 hover:text-brand-gold-500 hover:border-brand-gold-500 transition-colors"

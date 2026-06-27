@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Instagram, MessageCircle, Sparkles, ShoppingBag } from 'lucide-react';
-import { HERO_IMAGE, WHATSAPP_PHONE, INSTAGRAM_HANDLE } from '../data';
+import { HERO_IMAGE, WHATSAPP_PHONE, INSTAGRAM_URL } from '../data';
 
 interface HeroProps {
   onExploreClick: () => void;
@@ -29,7 +29,7 @@ export default function Hero({ onExploreClick }: HeroProps) {
   };
 
   const handleInstagramClick = () => {
-    window.open(`https://instagram.com/${INSTAGRAM_HANDLE.replace('@', '')}`, '_blank', 'noopener,noreferrer');
+    window.open(INSTAGRAM_URL, '_blank', 'noopener,noreferrer');
   };
 
   return (

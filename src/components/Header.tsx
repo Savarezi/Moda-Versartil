@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Compass, ShoppingBag } from 'lucide-react';
-import { WHATSAPP_PHONE, INSTAGRAM_HANDLE } from '../data';
+import { WHATSAPP_PHONE } from '../data';
 
 interface HeaderProps {
   onNavigate: (id: string) => void;
