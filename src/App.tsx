@@ -9,7 +9,9 @@ import {
   Instagram,
   Mail,
   Compass,
-  Check
+  Check,
+  Bot,
+  X
 } from 'lucide-react';
 
 import Header from './components/Header';
@@ -25,7 +27,8 @@ export default function App() {
   // States for App
   const [likedProducts, setLikedProducts] = useState<Record<string, boolean>>({});
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [showWhatsAppTooltip, setShowWhatsAppTooltip] = useState(true);
+  const [showAssistantTooltip, setShowAssistantTooltip] = useState(true);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,9 +36,9 @@ export default function App() {
     };
     window.addEventListener('scroll', handleScroll);
 
-    // Hide WhatsApp tooltip after 10 seconds
+    // Hide assistant tooltip after 10 seconds
     const timer = setTimeout(() => {
-      setShowWhatsAppTooltip(false);
+      setShowAssistantTooltip(false);
     }, 10000);
 
     return () => {
@@ -63,9 +66,8 @@ export default function App() {
     }
   };
 
-  const handleWhatsAppFloatingClick = () => {
-    const text = 'Olá! Vim do site Moda Versátil e gostaria de agendar uma consultoria exclusiva com uma personal stylist.';
-    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+  const handleAssistantClick = () => {
+    setIsChatOpen(!isChatOpen);
   };
 
   return (
@@ -158,32 +160,42 @@ export default function App() {
         </div>
       </footer>
 
-      {/* FLOAT ACTIONS: Back to top and WhatsApp floating button */}
+      {/* FLOAT ACTIONS: Back to top and Assistant floating button */}
       <div className="fixed bottom-6 right-6 flex flex-col space-y-4 z-40 items-end">
         
-        {/* Pulsing WhatsApp floating button */}
+        {/* Pulsing Assistant floating button */}
         <div className="relative flex items-center">
           <AnimatePresence>
-            {showWhatsAppTooltip && (
+            {showAssistantTooltip && !isChatOpen && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, x: 10 }}
                 animate={{ opacity: 1, scale: 1, x: 0 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 className="absolute right-16 mr-2 py-2 px-4 bg-brand-dark text-white text-[10px] font-semibold tracking-wider uppercase shadow-xl border border-brand-gold-500/25 whitespace-nowrap hidden sm:block pointer-events-none"
               >
-                Falar com Personal Stylist <span className="text-brand-gold-500">● Online</span>
+                Fale com nossa assistente virtual <span className="text-brand-gold-500">● Online</span>
               </motion.div>
             )}
           </AnimatePresence>
 
           <button
-            onClick={handleWhatsAppFloatingClick}
-            className="w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-105 relative cursor-pointer group"
-            aria-label="Falar no WhatsApp"
+            onClick={handleAssistantClick}
+            className={`w-14 h-14 ${
+              isChatOpen 
+                ? 'bg-brand-gold-500 text-brand-dark border-transparent' 
+                : 'bg-brand-dark hover:bg-brand-gold-500 text-brand-gold-400 hover:text-brand-dark border border-brand-gold-500/40'
+            } rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-105 relative cursor-pointer z-50`}
+            aria-label="Fale com nossa assistente virtual"
           >
             {/* Pulsing ring effect */}
-            <span className="absolute inset-0 rounded-full border border-green-400 animate-ping opacity-60 pointer-events-none"></span>
-            <MessageCircle size={26} className="group-hover:rotate-12 transition-transform duration-300" />
+            {!isChatOpen && (
+              <span className="absolute inset-0 rounded-full border border-brand-gold-500 animate-ping opacity-60 pointer-events-none"></span>
+            )}
+            {isChatOpen ? (
+              <X size={26} className="rotate-0 transition-transform duration-300" />
+            ) : (
+              <Bot size={26} className="group-hover:rotate-12 transition-transform duration-300" />
+            )}
           </button>
         </div>
 
@@ -204,6 +216,52 @@ export default function App() {
         </AnimatePresence>
 
       </div>
+
+      {/* Floating Chat Widget */}
+      <AnimatePresence>
+        {isChatOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 50, scale: 0.95 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 250 }}
+            className="fixed bottom-24 right-6 w-[calc(100vw-32px)] sm:w-[400px] h-[580px] max-h-[75vh] bg-brand-dark border border-brand-gold-500/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-50 overflow-hidden flex flex-col rounded-2xl"
+          >
+            {/* Header */}
+            <div className="bg-brand-dark border-b border-brand-gold-500/20 px-4 py-3 flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="relative">
+                  <div className="w-10 h-10 bg-brand-gold-500/10 border border-brand-gold-500/30 rounded-full flex items-center justify-center text-brand-gold-400">
+                    <Bot size={20} />
+                  </div>
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-brand-dark rounded-full"></span>
+                </div>
+                <div>
+                  <h4 className="text-white text-xs font-semibold tracking-wider uppercase font-serif">Assistente Virtual</h4>
+                  <p className="text-[10px] text-brand-gold-500 uppercase font-sans tracking-widest">Moda Versátil ● Online</p>
+                </div>
+              </div>
+              <button 
+                onClick={() => setIsChatOpen(false)}
+                className="w-8 h-8 rounded-full border border-white/10 hover:border-brand-gold-500/50 flex items-center justify-center text-brand-beige-300 hover:text-white transition-colors cursor-pointer"
+                aria-label="Fechar assistente"
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            {/* Chatbot Content Frame */}
+            <div className="flex-1 bg-brand-beige-50 relative">
+              <iframe
+                src="https://typebot.co/moda-vers-til-499uwth"
+                className="w-full h-full border-0"
+                title="Assistente Virtual Moda Versátil"
+                allow="geolocation; microphone; camera"
+              ></iframe>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </div>
   );
