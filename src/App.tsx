@@ -71,7 +71,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-brand-beige-50 text-brand-dark font-sans selection:bg-brand-gold-500/20 selection:text-brand-dark antialiased">
+    <div className="min-h-screen bg-linen text-brand-dark font-sans selection:bg-brand-gold-500/20 selection:text-brand-dark antialiased">
       
       {/* Elegante Header Fixo */}
       <Header onNavigate={handleNavigate} />
