@@ -7,14 +7,14 @@ export default function About() {
   return (
     <section
       id="sobre"
-      className="py-28 bg-[#FCFBF9] px-6 relative overflow-hidden border-y border-brand-beige-200/50"
+      className="py-28 bg-[#FAF6F0] px-6 relative overflow-hidden border-y border-brand-beige-200/50"
     >
       {/* Immersive Background Image with Filters, Opacity and Gradients */}
       <div className="absolute inset-0 pointer-events-none z-0 select-none">
         <img
-          src="/images/noble_fabric.jpg"
+          src="/images/TECIDO.png"
           alt="Textura de tecido nobre"
-          className="w-full h-full object-cover bg-center bg-no-repeat blur-[1px] scale-[1.02] opacity-[0.72] transition-opacity duration-1000 select-none pointer-events-none"
+          className="w-full h-full object-cover bg-center bg-no-repeat scale-[1.01] opacity-[0.85] transition-opacity duration-1000 select-none pointer-events-none"
           referrerPolicy="no-referrer"
           onError={(e) => {
             // Invisible fallback if background image is not present
@@ -22,8 +22,8 @@ export default function About() {
           }}
         />
         {/* Vertical and Horizontal Contrast Gradients to guarantee high legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FCFBF9] via-[#FCFBF9]/40 to-[#FCFBF9]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FCFBF9]/90 via-[#FCFBF9]/30 to-[#FCFBF9]/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FAF6F0] via-[#FAF6F0]/10 to-[#FAF6F0]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF6F0]/90 via-[#FAF6F0]/20 to-[#FAF6F0]/90" />
       </div>
 
       {/* Aesthetic closing lines with subtle gold/transparent gradients */}
